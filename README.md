@@ -1,4 +1,4 @@
 # FindTheNumGame
 My First Basic Game
 
-I'm 19 years old, now. And this project is my first game. 
+Today 2021-03-11. I'm 19 years old, now. And this project is my first game. 
