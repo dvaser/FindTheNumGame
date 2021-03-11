@@ -1,0 +1,36 @@
+
+>> OYUN HAKKINDA <<
+
+        - Sistem uzerinde rastgele 1 ile 100 arasında sayi olusturulur.
+        - Oyun 3 zorluk seviyesinden olusur.
+        - Her kullanıcıya verilen başlangıç can hakki 5'dir.
+        - Yanlis olan her cevap icin can hakki (-1) azalir.
+        - Can hakkı biten kullanici direkt olarak elenir.
+        - Her kullanıcıya verilen başlangıç puanı 50'dir.
+        - Puani biten kullanici direkt olarak elenir.
+        - Sayi, kullanıcılar tarafından bulunmaya çalışılır.
+
+
+>> OYUNUN KURALLARI <<
+
+    \\ Puanlamada Oluşan // 
+
+        ->      (-1) azalma aranan sayının, yazdiginiz sayiya     [-5/+5]   - Cok yakin
+        ->      (-2) azalma aranan sayının, yazdiginiz sayiya     [-10/+10] - Yakin
+        ->      (-4) azalma aranan sayının, yazdiginiz sayiya     [-20/+20] - Orta (Yakin)
+        ->      (-7) azalma aranan sayının, yazdiginiz sayiya     [-35/+35] - Orta (Uzak)
+        ->      (-10) azalma aranan sayının, yazdiginiz sayiya    [-50/+50] - Uzak
+        ->      (-20) azalma aranan sayının, yazdiginiz sayiya    [-99/+99] - Cok uzak
+        
+                                                                   aralığında olduğunu gösterir.
+        
+
+>> OYUNUN IPUCU <<
+
+        - Diger oyuncularin puan eksilmesinden yola cikarak sayiya yaklasin.
+        - Sectiginiz zorluk seviyesine gore yonlendirmeleri dikkate alin.
+
+
+``````````````````````````````````````````````BASARILAR``````````````````````````````````````````
+
+

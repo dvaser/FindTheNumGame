@@ -4,21 +4,20 @@ import ControlManager, Methods
 class _SaveOnFile:
     
     def saveUser():
-        userFile = open("UserFile.txt","a",encoding="utf-8")
-        userFile.write()
+        userFile = open("UserFile.txt", "a", encoding="utf-8")
+        userFile.write()  #! Yazilacak seyi ekle
         userFile.close()
 
-class _Shortcut:
-    
-    def exceptForTry():
-        except Exception as ex:
-            print(f"\nHatali deger girdiniz...\nError: {ex}")
-        else:
-            isBool = False
-        finally:
-            print("\n"+"-"*50)
 
 class _Register:
+    
+    def userRegister():
+        _Register.nameRegister()
+        _Register.nicknameRegister()
+        _Register.passwordRegister()
+        _Register.confirmPasswordRegister()
+        _Register.birthdayRegister()
+        _Register.genderRegister()
     
     def nameRegister():
         isBool = True
@@ -26,7 +25,12 @@ class _Register:
             try:
                 userName = str(input('\nAd-Soyad: ')).title()
                 ControlManager._ControlRegister.checkName(name=userName)
-            _Shortcut.exceptForTry()
+            except Exception as ex:
+                print(f"\nHatali deger girdiniz...\nError: {ex}")
+            else:
+                isBool = False
+            finally:
+                print("\n"+"-"*50)
 
     def nicknameRegister():
         isBool = True
@@ -34,31 +38,53 @@ class _Register:
             try:
                 userNickname = input('\nNickname: ')
                 ControlManager._ControlRegister.checkNickname(nick=userNickname)
-            _Shortcut.exceptForTry()
+            except Exception as ex:
+                print(f"\nHatali deger girdiniz...\nError: {ex}")
+            else:
+                isBool = False
+            finally:
+                print("\n"+"-"*50)
 
     def passwordRegister():
+        global userPassword
         isBool = True
         while isBool:
             try:
                 userPassword = input('\nPassword: ')
                 ControlManager._ControlRegister.checkPassword(psw=userPassword)
-            _Shortcut.exceptForTry()
+            except Exception as ex:
+                print(f"\nHatali deger girdiniz...\nError: {ex}")
+            else:
+                isBool = False
+            finally:
+                print("\n"+"-"*50)
 
     def confirmPasswordRegister():
         isBool = True
         while isBool:
             try:
+                print("\nPassword: "+"*"*len(userPassword))
                 userConfirmPassword = input('\nPassword (Tekrar): ')
-                ControlManager._ControlRegister.checkConfirmPassword(cpsw=userConfirmPassword)
-            _Shortcut.exceptForTry()
+                ControlManager._ControlRegister.checkConfirmPassword(cpsw=userConfirmPassword, psw=userPassword)
+            except Exception as ex:
+                print(f"\nHatali deger girdiniz...\nError: {ex}")
+            else:
+                isBool = False
+            finally:
+                print("\n"+"-"*50)
 
-    def ageRegister():
+    def birthdayRegister():
         isBool = True
         while isBool:
             try:
-                userAge = int(input('\nYas: '))
-                ControlManager._ControlRegister.checkAge(age=userAge)
-            _Shortcut.exceptForTry()
+                userBirthday = str(input('\nDogum Tarihi (gg.aa.yy): '))
+                ControlManager._ControlRegister.checkBirthday(birth=userBirthday)
+            except Exception as ex:
+                print(f"\nHatali deger girdiniz...\nError: {ex}")
+            else:
+                isBool = False
+            finally:
+                print("\n"+"-"*50)
         
     def genderRegister():
         isBool = True
@@ -66,7 +92,12 @@ class _Register:
             try:
                 userGender = str(input('\nCinsiyet: ')).title()
                 ControlManager._ControlRegister.checkGender(gender=userGender)
-            _Shortcut.exceptForTry()
+            except Exception as ex:
+                print(f"\nHatali deger girdiniz...\nError: {ex}")
+            else:
+                isBool = False
+            finally:
+                print("\n"+"-"*50)
 
 
 class _Login:
