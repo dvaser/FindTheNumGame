@@ -11,3 +11,5 @@
     > https://www.instagram.com/dogukan.vs
     
     > https://www.twitter.com/dogukan_vs
+    
+    > https://www.linkedin.com/in/dvaser
