@@ -9,7 +9,7 @@ import Manager, Methods, os
 
 os.system('cls')
 Methods._Main.start()
-
+Methods._Main.menu()
 
 """
         #! Kullanicilar arasinda puan siralamasi da yap...

@@ -77,7 +77,7 @@ class _Register:
         isBool = True
         while isBool:
             try:
-                userBirthday = str(input('\nDogum Tarihi (gg.aa.yy): '))
+                userBirthday = input('\nDogum Tarihi (gg.aa.yyyy): ')
                 ControlManager._ControlRegister.checkBirthday(birth=userBirthday)
             except Exception as ex:
                 print(f"\nHatali deger girdiniz...\nError: {ex}")
