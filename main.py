@@ -16,5 +16,9 @@ Methods._Main.menu()
         #* 50 puan ve elenmek... (Puan - ye dusse bile 0 gosterilir. Siralamaya da sondan eklenir i--)
         #! 5 adet can hakki ve elenmek... (Puani kac ile biterse)
         #? Zorluk seviyesi
+        
         #* Levellendirme olabilir (Dusun bunu bak..)
+                #? Kolay - Suan planladigin gibi
+                #? Orta - asagi ve yukari yonlendirme olmayacak
+                #? Zor - Asagi yukari yok ve bir onceki kullanicinin dedigi sayilar da gozukmeyecek
 """

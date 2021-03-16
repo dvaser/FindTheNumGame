@@ -3,8 +3,8 @@
     The project is my first basic game.
 
 # Who am I ?
-    My name nd surname is Dogukan Vatansever.
-    I'm 19 years old, now nd today 2021-03-11. 
+    I'm Dogukan Vatansever.
+    I'm 19 years old, now and today 2021-03-11. 
 
 # Social Media
     
