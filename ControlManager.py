@@ -143,3 +143,12 @@ class _ControlUpdate:
     pass
 
 
+class _ControlGame:
+
+    def checkGuessNum(guessNum):
+        if not 0 < guessNum < 100:
+            raise Exception("Sayi araliginiz [1-99] olmalidir.")
+        elif re.search("\s", guessNum):
+            raise Exception("Bosluk olamamalidir.")
+        else:
+            Methods._Methods.timer(seconds=0.1)

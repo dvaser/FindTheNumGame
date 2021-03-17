@@ -26,7 +26,7 @@ class _SaveOnFile():
 class _Register:
     
     def guestRegister(numberOfUser):
-        userGuestHeart = 10
+        userGuestHeart = 5
         userGuestScore = 50
         for x in range(int(numberOfUser)):
             isBool = True
@@ -207,7 +207,7 @@ class _Game:
         print(("-"*50))
         
         number = random.randint(1,100)
-        remainingHeart = 10
+        remainingHeart = 5
         guessNum = 0
         for hearts in range(remainingHeart):
             for gamer in range(int(Methods.numberOfUser)):
@@ -217,15 +217,17 @@ class _Game:
                     Guest[gamer]['Heart'] = Guest[gamer]['Heart']-1
                     print(f"\n{Guest[gamer]['Name']} kalan canın: {Guest[gamer]['Heart']}")
                     print(f"\nPuanın: {Guest[gamer]['Score']} iken {Guest[gamer]['Score']-point} oldu.\n")
-                    Guest[gamer]['Score'] = user[gamer]['Score']-point
+                    Guest[gamer]['Score'] = Guest[gamer]['Score']-point
                 
-                print(("="*50)+"\n")
                 isBool = True
                 while isBool:    
                     try:
-                        guessNum = int(input(f"{user[gamer]['userName']} {user[gamer]['userSurname']}, sence sayı kaçtır? : "))
+                        guessNum = int(input(f"{Guest[gamer]['userName']}, sence sayı kaçtır? : "))
+                        ControlManager._ControlGame.checkGuessNum(guessNum=guessNum)
+                    except (TypeError):
+                        print(f"\nHatali deger girdiniz...\nError: Sayi degeri girmelisiniz.")
                     except Exception as ex:
-                        pass
+                        print(f"\nHatali deger girdiniz...\nError: {ex}")
                     else:
                         isBool = False
                         if guessNum == number:

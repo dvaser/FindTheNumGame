@@ -71,6 +71,7 @@ class _Main:
                     print(aboutGameFile.read())
                     aboutGameFile.close()
                     choose = input("\n\nMenuye devam etmek icin herhangi tuslama yapiniz: ")
+                    _Methods.timer(seconds=0.1)
                     _Main.menu()
 
 
