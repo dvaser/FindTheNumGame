@@ -20,7 +20,7 @@ Methods._Main.menu()
         #? Zorluk seviyesi
         
         #* Levellendirme olabilir (Dusun bunu bak..)
-                #? Kolay - Suan planladigin gibi
+                #? Kolay - Asagi yukari yonlendirme (yaptim), azalan puan degeri ve sayinin hangi aralikta oldugu, en son dedigi sayi..
                 #? Orta - asagi ve yukari yonlendirme olmayacak
                 #? Zor - Asagi yukari yok ve bir onceki kullanicinin dedigi sayilar da gozukmeyecek
 """

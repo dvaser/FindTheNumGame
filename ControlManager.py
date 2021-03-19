@@ -4,13 +4,13 @@ import os, Methods, re
 class _ControlMenu:
     
     def checkMenu(helloMenu):
-        if helloMenu not in range(1,5):
+        if helloMenu not in range(1,6):
             raise Exception("Tuslamayi dogru yapiniz.")
         else:
             Methods._Methods.timer(seconds=0.5)  
 
     def checkGameMenu(gameMenu):
-        if gameMenu not in range(1,3):
+        if gameMenu not in range(1,4):
             raise Exception("Tuslamayi dogru yapiniz.")
         else:
             Methods._Methods.timer(seconds=0.5)  
@@ -97,6 +97,8 @@ class _ControlRegister:
             raise Exception("Dogum Tarihi rakam icermelidir.")
         elif not re.search(".", birth):
             raise Exception("Dogum Tarihi nokta karakteri icermelidir.")
+        elif re.search("/", birth):
+            raise Exception("Dogum Tarihi nokta karakteri icermelidir.")
         elif re.search("[_@$]", birth):
             raise Exception("Dogum Tarihi _@$ karakter icermemelidir.")
         else:
@@ -148,7 +150,9 @@ class _ControlGame:
     def checkGuessNum(guessNum):
         if not 0 < guessNum < 100:
             raise Exception("Sayi araliginiz [1-99] olmalidir.")
-        elif re.search("\s", guessNum):
+        elif re.search("\s", str(guessNum)):
             raise Exception("Bosluk olamamalidir.")
-        else:
-            Methods._Methods.timer(seconds=0.1)
+
+    def checkGuestNum():
+        pass
+

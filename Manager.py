@@ -32,7 +32,7 @@ class _Register:
             isBool = True
             while isBool:
                 try:
-                    userGuestName = str(input(f"\n{x+1}.Kullanıcının Adı-Soyadi: ")).title()
+                    userGuestName = str(input(f"\n{x+1}.Kullanıcının Adı-Soyadi: ")).title().rstrip(' ')
                     ControlManager._ControlRegister.checkName(name=userGuestName)
                     isBoolien = True
                     while isBoolien:
@@ -60,6 +60,7 @@ class _Register:
                 else:
                     _SaveOnFile.saveGuest(name=userGuestName, birth=userGuestBirthday, gender=userGuestGender, heart=userGuestHeart, score=userGuestScore)
                     print("\n"+("-"*50)+f"\n\nTebrikler, {x+1}.kullanıcı girişiniz başarılı.\n\n"+("-"*50))
+                    Methods._Methods.timer(seconds=3)
                     isBool = False
 
     def userRegister():
@@ -201,79 +202,125 @@ class _Update:
 class _Game:
     
     def gameGuest():
+        
         print("\n"+("-"*50)+"\n")
         for x in range(int(Methods.numberOfUser)):
-            print(f"{Guest[x]['Name']} kalan canın: {Guest[x]['Heart']}\n")
+            print(f"{Guest[x]['Name']}, canın: {Guest[x]['Heart']}\n")
         print(("-"*50))
-        
+        Methods._Methods.timer(seconds=5, writer='Sayi olusturuluyor, bekleyiniz...')
+
+        winnerBool = False
+        Eliminated = []
+        eliminatedGuestIndex = []
         number = random.randint(1,100)
         remainingHeart = 5
         guessNum = 0
-        for hearts in range(remainingHeart):
-            for gamer in range(int(Methods.numberOfUser)):
-                
+        Gamer = int(Methods.numberOfUser)
+        for Hearts in range(remainingHeart):
+            for gamer in range(Gamer): 
+
                 def message(direction='', point=0):
-                    print(f"\nAradigin sayının {direction}sindasin.")
+                    print("\n"+("<^>"*30))
                     Guest[gamer]['Heart'] = Guest[gamer]['Heart']-1
-                    print(f"\n{Guest[gamer]['Name']} kalan canın: {Guest[gamer]['Heart']}")
-                    print(f"\nPuanın: {Guest[gamer]['Score']} iken {Guest[gamer]['Score']-point} oldu.\n")
+                    print(f"\n  {Guest[gamer]['Name']}, kalan canın: {Guest[gamer]['Heart']}")
                     Guest[gamer]['Score'] = Guest[gamer]['Score']-point
+                    if 0 > Guest[gamer]['Score']:
+                        print(f"\n  Puanın: {Guest[gamer]['Score']+point} iken {0} oldu.")
+                        Guest[gamer]['Score'] = 0
+                    else:
+                        print(f"\n  Puanın: {Guest[gamer]['Score']+point} iken {Guest[gamer]['Score']} oldu.")
+                    print(f"\n          >> Puandaki azalma: -{point}")
+                    print(f"\n          >> Aradigin sayının {direction}sindasin.\n")
+                    Methods._Methods.timer(seconds=7)
                 
                 isBool = True
                 while isBool:    
                     try:
-                        guessNum = int(input(f"{Guest[gamer]['userName']}, sence sayı kaçtır? : "))
+                        print("\n"+("<^>"*30))
+                        guessNum = int(input(f"\n{Guest[gamer]['Name']}, sence sayı kaçtır? : "))
                         ControlManager._ControlGame.checkGuessNum(guessNum=guessNum)
-                    except (TypeError):
-                        print(f"\nHatali deger girdiniz...\nError: Sayi degeri girmelisiniz.")
                     except Exception as ex:
                         print(f"\nHatali deger girdiniz...\nError: {ex}")
+                    
                     else:
                         isBool = False
+                        gap1 = [number-5, number+5]
+                        gap2 = [number-10, number+10]
+                        gap3 = [number-20, number+20]
+                        gap4 = [number-35, number+35]
+                        gap5 = [number-50, number+50]
+                        gap6 = [number-99, number+99]
+                        
                         if guessNum == number:
-                            print("\n"+("*"*50)+"\n")
+                            winner = Guest[gamer]['Name']
                             Guest[gamer]['Heart'] = Guest[gamer]['Heart']-1
-                            print(f"{Guest[gamer]['Name']}, oyunu kazandın.")
-                            print("\n"+("*"*50)+"\n")
-                            for x in range(Methods.numberOfUser):
-                                print(f"{Guest[x]['Name']}\nKalan canın: {Guest[x]['Heart']}\nPuanın: {Guest[x]['Score']}\n")
-                            Methods._Methods.timer(seconds=2, writer='Guzel oyundu...')
-                            Methods._Main.menu()
-                        elif guessNum in range(number-99,number+99):
-                            if guessNum in range(number-50,number+50):
-                                if guessNum in range(number-35,number+35):
-                                    if guessNum in range(number-20,number+20):
-                                        if guessNum in range(number-10,number+10):
-                                            if guessNum in range(number-5,number+5):
-                                                if number-5 <= guessNum < number:
+                            winnerBool = True
+                        
+                        elif guessNum in range(gap6[0], gap6[1]):
+                            if guessNum in range(gap5[0], gap5[1]):
+                                if guessNum in range(gap4[0], gap4[1]):
+                                    if guessNum in range(gap3[0], gap3[1]):
+                                        if guessNum in range(gap2[0], gap2[1]):
+                                            if guessNum in range(gap1[0], gap1[1]):
+                                                if gap1[0] <= guessNum < number:
                                                     message(direction='aşağı', point=1)
-                                                elif number < guessNum <= number+5:
+                                                elif number < guessNum <= gap1[1]:
                                                     message(direction='yukarı', point=1)
                                             else:
-                                                if number-10 <= guessNum < number-5:
+                                                if gap2[0] <= guessNum < gap1[0]:
                                                     message(direction='aşağı', point=2)
-                                                elif number+5 < guessNum <= number+10:
+                                                elif gap1[1] < guessNum <= gap2[1]:
                                                     message(direction='yukarı', point=2)
                                         else:
-                                            if number-20 <= guessNum < number-10:
+                                            if gap3[0] <= guessNum < gap2[0]:
                                                 message(direction='aşağı', point=4)
-                                            elif number+10 < guessNum <= number+20:
+                                            elif gap2[1] < guessNum <= gap3[1]:
                                                 message(direction='yukarı', point=4)
                                     else:
-                                        if number-35 <= guessNum < number-20:
+                                        if gap4[0] <= guessNum < gap3[0]:
                                             message(direction='aşağı', point=7)
-                                        elif number+20 < guessNum <= number+35:
+                                        elif gap3[1] < guessNum <= gap4[1]:
                                             message(direction='yukarı', point=7)
                                 else:
-                                    if number-50 <= guessNum < number-35:
+                                    if gap5[0] <= guessNum < gap4[0]:
                                         message(direction='aşağı', point=10)
-                                    elif number+35 < guessNum <= number+50:
+                                    elif gap4[1] < guessNum <= gap5[1]:
                                         message(direction='yukarı', point=10)
                             else:
-                                if number-99 <= guessNum < number-50:
+                                if gap6[0] <= guessNum < gap5[0]:
                                     message(direction='aşağı', point=20)
-                                elif number+50 < guessNum <= number+99:
+                                elif gap5[1] < guessNum <= gap6[1]:
                                     message(direction='yukarı', point=20)
+                
+                if (0 == Guest[gamer]['Heart']) or (0 == Guest[gamer]['Score']) or (winnerBool == True):
+                    Gamer -= 1
+                    if winnerBool == True:
+                        for x in range(len(Guest)):
+                            Eliminated.append(Guest[x])
+                            Guest.pop(x)
+                        print("\n"+("<^>"*30))
+                        winnerMassage = f"  {winner}, oyunu kazandın."
+                        print(f"\n{winnerMassage}\n")
+                        Methods._Methods.cupMassage(massage=winnerMassage)
+                        for x in range(int(Methods.numberOfUser)):
+                            print(f"\n\n{Eliminated[x]['Name']}\nKalan canın: {Eliminated[x]['Heart']}\nPuanın: {Eliminated[x]['Score']}")
+                        Methods._Methods.timer(seconds=10, writer='\nGuzel oyundu... Menuye yonlendiriliyorsunuz...')
+                        Methods._Main.menu()
+                    elif 0 == Gamer:
+                        Methods._Methods.timer(seconds=10)
+                        Methods._Methods.ScreenWriter(seconds=5, writer="Bu oyunu kimse kazanamadı. Menuye yonlendiriliyorsunuz...")
+                        Methods._Main.menu()
+                    else:
+                        Eliminated.append(Guest[gamer])
+                        eliminatedGuestIndex.append(gamer)          #! Hep ilk kaydolan eleniyor... Range disina cikma sorunu aliyoz
+                                                                    #*     Eliminated.append(Guest[x])
+                                                                    #* IndexError: list index out of range
+            
+            def eliminatedGuest():
+                for x in range(len(eliminatedGuestIndex)):
+                    print(f"\n\n{Guest[x]['Name']} elendi...")
+                    Guest.pop(eliminatedGuestIndex[x])
+            eliminatedGuest()
 
     def gameUser():
         pass
