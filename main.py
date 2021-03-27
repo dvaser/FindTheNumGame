@@ -16,11 +16,15 @@ Methods._Main.menu()
         #* 50 puan ve elenmek... (Puan - ye dusse bile 0 gosterilir. Siralamaya da sondan eklenir i--)
         #! 5 adet can hakki ve elenmek... (Puani kac ile biterse)
                 #* Bunu kontrol et (5 can hakki ve 50 puan degerini)
-
+        
         #? Zorluk seviyesi
         
         #* Levellendirme olabilir (Dusun bunu bak..)
                 #? Kolay - Asagi yukari yonlendirme (yaptim), azalan puan degeri ve sayinin hangi aralikta oldugu, en son dedigi sayi..
                 #? Orta - asagi ve yukari yonlendirme olmayacak
                 #? Zor - Asagi yukari yok ve bir onceki kullanicinin dedigi sayilar da gozukmeyecek
+
+        #Todo: Range Hatasini duzelt
+        #! Oyun kazaninca oyun bitiyor... 
+
 """

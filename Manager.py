@@ -292,7 +292,7 @@ class _Game:
                                 elif gap5[1] < guessNum <= gap6[1]:
                                     message(direction='yukarı', point=20)
                 
-                if (0 == Guest[gamer]['Heart']) or (0 == Guest[gamer]['Score']) or (winnerBool == True):
+                while (0 == Guest[gamer]['Heart']) or (0 == Guest[gamer]['Score']) or (winnerBool == True):
                     Gamer -= 1
                     if winnerBool == True:
                         for x in range(len(Guest)):
